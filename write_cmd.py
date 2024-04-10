@@ -5,7 +5,6 @@ A new file.
 import json
 import numpy as np
 import os
-import subprocess
 from itertools import product
 
 
@@ -69,7 +68,7 @@ def write_shell(job, paras, script, shell):
 def func():
     method = 'coop'
     names = load_names('sample')
-#    names = ['pmed17-p25']
+#    names = ['pmed17-p25'] # for testing
     n_weights = [8]
     A = np.linspace(0.2, 1, 5)
     settings = [[10, 400, round(a, 1)] for a in A]
@@ -79,10 +78,6 @@ def func():
     shell = 'submit-{}.bat'.format(method)
     script = 'xlab_{}.py'.format(method)
     write_shell(method, paras, script, shell)
-    resp = subprocess.run(['dos2unix', shell],
-                          capture_output=True,
-                          encoding='gbk')
-    print(resp.stderr)
     pass
 
 

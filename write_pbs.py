@@ -5,7 +5,6 @@ A new file.
 import json
 import numpy as np
 import os
-import subprocess
 from itertools import product
 
 
@@ -92,10 +91,6 @@ def func():
     shell = 'submit-{}.pbs'.format(method)
     script = 'xlab_{}.py'.format(method)
     write_shell(method, paras, script, shell)
-    resp = subprocess.run(['dos2unix', shell],
-                          capture_output=True,
-                          encoding='gbk')
-    print(resp.stderr)
     pass
 
 
